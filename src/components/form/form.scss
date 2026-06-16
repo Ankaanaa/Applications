@@ -1,0 +1,32 @@
+.form {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+
+  .form__container {
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    height: 200px;
+    border: 1px solid black;
+  }
+  .form__inp {
+    display: block;
+    max-width: 350px;
+    width: 100%;
+    height: 20px;
+
+    &:last-of-type {
+      height: 40px !important;
+      padding-bottom: 40px !important;
+    }
+  }
+  .form__text__err {
+    display: block;
+    color: red;
+  }
+}
+
+.form__inp.form__err {
+  border: 1px solid red;
+}
