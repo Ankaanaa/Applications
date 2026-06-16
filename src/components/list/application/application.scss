@@ -1,0 +1,32 @@
+.application {
+  margin: 0 auto;
+  max-width: 800px;
+  margin-bottom: 10px;
+  .application__container {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .application__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .application__title {
+    font-weight: 500;
+  }
+  .application__desc {
+    font-weight: 400;
+  }
+
+  .application__delete {
+    font-size: 30px;
+    transition: all 400ms ease;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

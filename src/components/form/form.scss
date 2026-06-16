@@ -25,6 +25,19 @@
     display: block;
     color: red;
   }
+
+  .form__btn {
+    margin-top: 20px;
+    max-width: 100px;
+    height: 30px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 400ms ease;
+
+    &:hover {
+      background-color: rgba(159, 158, 158, 0.845);
+    }
+  }
 }
 
 .form__inp.form__err {

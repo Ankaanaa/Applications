@@ -3,13 +3,12 @@ import type { IApplications } from '../../types/applications'
 import './form.scss'
 interface IProps {
   setApplications: React.Dispatch<React.SetStateAction<IApplications>>
-  applications: IApplications
 }
 interface IEnoughLetters {
   title: boolean
   descriptions: boolean
 }
-const Form = ({ applications, setApplications }: IProps) => {
+const Form = ({ setApplications }: IProps) => {
   const [isEnoughLetters, setIsEnoughLetters] = useState<IEnoughLetters>({
     title: false,
     descriptions: false,
@@ -26,13 +25,13 @@ const Form = ({ applications, setApplications }: IProps) => {
       setApplications((prev) => ({
         ...prev,
         new: [
-          ...prev.new,
           {
             title: title,
             description: description,
-            id: Math.random(),
+            id: Math.floor(Math.random() * 99999) + 1,
             progress: 'new',
           },
+          ...prev.new,
         ],
       }))
     setTitle('')
@@ -112,7 +111,10 @@ const Form = ({ applications, setApplications }: IProps) => {
           <label className='form__text__err'>Must be at least 15 letters</label>
         )}
 
-        <button onClick={(e) => createApplication(title, description, e)}>
+        <button
+          className='form__btn'
+          onClick={(e) => createApplication(title, description, e)}
+        >
           Create
         </button>
       </form>

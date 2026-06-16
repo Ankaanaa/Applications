@@ -1,0 +1,29 @@
+.list {
+  .list__text {
+    text-align: center;
+  }
+  .list__progress {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .list__sort {
+    border: 1px solid black;
+    padding-top: 5px;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 400ms ease;
+
+    &:hover {
+      background-color: rgba(159, 158, 158, 0.845);
+    }
+  }
+}
+
+.list__sort.list__sort__active {
+  background-color: rgba(159, 158, 158, 0.845);
+}
