@@ -8,10 +8,7 @@ interface IProps {
 const ManagerPanel = ({ applications, setApplications }: IProps) => {
   return (
     <div>
-      <h1>Applications</h1>
       <div>
-        <div>Application:</div>
-
         <List
           applications={applications}
           setApplications={setApplications}
