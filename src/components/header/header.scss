@@ -1,0 +1,25 @@
+.header {
+  border-bottom: 1px solid black;
+  height: 60px;
+  .header__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header__btn {
+    max-width: 150px;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    transition: all 400ms ease;
+    &:last-of-type {
+      margin-left: 20px;
+    }
+    &:hover {
+      background-color: rgba(159, 158, 158, 0.845);
+    }
+  }
+}
+.header__btn.header__active {
+  background-color: rgba(159, 158, 158, 0.845);
+}
