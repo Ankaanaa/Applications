@@ -38,13 +38,13 @@ const Form = ({ setApplications }: IProps) => {
     setDescription('')
   }
   const checkFormBeforeCreateApp = () => {
-    if (title.length < 7 && description.length < 15) {
+    if (title.trim().length < 7 && description.trim().length < 15) {
       errNotEnoughLetters('title', true)
       return false
-    } else if (description.length < 10) {
+    } else if (description.trim().length < 10) {
       errNotEnoughLetters('descriptions')
       return false
-    } else if (title.length < 7) {
+    } else if (title.trim().length < 7) {
       errNotEnoughLetters('title')
       return false
     }
