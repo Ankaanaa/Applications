@@ -1,4 +1,4 @@
-export interface Application {
+export interface IApplication {
   id: number
   title: string
   description: string
@@ -6,7 +6,7 @@ export interface Application {
 }
 
 export interface IApplications {
-  new: Application[]
-  inProgress: Application[]
-  done: Application[]
+  new: IApplication[]
+  inProgress: IApplication[]
+  done: IApplication[]
 }

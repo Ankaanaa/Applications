@@ -5,8 +5,9 @@ import './list.scss'
 interface IProps {
   applications: IApplications
   setApplications: React.Dispatch<React.SetStateAction<IApplications>>
+  role: 'manager' | 'user'
 }
-const List = ({ applications, setApplications }: IProps) => {
+const List = ({ applications, setApplications, role }: IProps) => {
   const [progress, setProgress] = useState<keyof IApplications>()
   const [showAllApp, setShowAllApp] = useState<boolean>(true)
   const SelectShowApp = (key: keyof IApplications) => {
@@ -16,6 +17,20 @@ const List = ({ applications, setApplications }: IProps) => {
   const SelectAllShowApp = () => {
     setProgress(null)
     setShowAllApp(true)
+  }
+  const listApplication = (key: keyof IApplications) => {
+    return applications[key].map((el) => (
+      <Application
+        key={el.id}
+        title={el.title}
+        descriptions={el.description}
+        id={el.id}
+        progress={el.progress}
+        setApplications={setApplications}
+        keyArr={key}
+        role={role}
+      />
+    ))
   }
   return (
     <div className='list'>
@@ -55,9 +70,9 @@ const List = ({ applications, setApplications }: IProps) => {
             All
           </h4>
         </div>
-        {showAllApp &&
-          applications.new.map((el) => {
-            return (
+        {showAllApp && (
+          <>
+            {applications.new.map((el) => (
               <Application
                 title={el.title}
                 descriptions={el.description}
@@ -65,25 +80,11 @@ const List = ({ applications, setApplications }: IProps) => {
                 progress={el.progress}
                 setApplications={setApplications}
                 keyArr='new'
+                role={role}
               />
-            )
-          })}
-        {progress === 'new' &&
-          applications.new.map((el) => {
-            return (
-              <Application
-                title={el.title}
-                descriptions={el.description}
-                id={el.id}
-                progress={el.progress}
-                setApplications={setApplications}
-                keyArr='new'
-              />
-            )
-          })}
-        {progress === 'inProgress' &&
-          applications.inProgress.map((el) => {
-            return (
+            ))}
+
+            {applications.inProgress.map((el) => (
               <Application
                 title={el.title}
                 descriptions={el.description}
@@ -91,22 +92,26 @@ const List = ({ applications, setApplications }: IProps) => {
                 progress={el.progress}
                 setApplications={setApplications}
                 keyArr='inProgress'
+                role={role}
               />
-            )
-          })}
-        {progress === 'done' &&
-          applications.inProgress.map((el) => {
-            return (
+            ))}
+
+            {applications.done.map((el) => (
               <Application
                 title={el.title}
                 descriptions={el.description}
                 id={el.id}
                 progress={el.progress}
                 setApplications={setApplications}
-                keyArr='done'
+                keyArr='inProgress'
+                role={role}
               />
-            )
-          })}
+            ))}
+          </>
+        )}
+        {progress === 'new' && listApplication('new')}
+        {progress === 'inProgress' && listApplication('inProgress')}
+        {progress === 'done' && listApplication('done')}
       </div>
     </div>
   )
